@@ -8,6 +8,16 @@ Source: CRAN
 Version: 2.4.1
 Hash: b488861d8c3dfac497e041ec911df9fb
 
+Package: digest
+Source: CRAN
+Version: 0.6.25
+Hash: ec0a673866797c8c1fc1daa359fb4cad
+
+Package: jsonlite
+Source: CRAN
+Version: 1.6.1
+Hash: bfde5e6072ca0f5226f49e457a9ba62d
+
 Package: packrat
 Source: CRAN
 Version: 0.5.0

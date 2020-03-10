@@ -5,7 +5,8 @@
 MetricFamilySample <- R6Class(
   "MetricFamilySample",
   public = list(
-    initialize = function() {},
+    initialize = function() {
+    },
     getName = function() {
       return(private$name)
     },

@@ -5,7 +5,8 @@
 PrometheusSample <- R6Class(
   "PrometheusSample",
   public = list(
-    initialize = function() {},
+    initialize = function() {
+    },
     getName = function() {
       return(private$name)
     },
