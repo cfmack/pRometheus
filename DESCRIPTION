@@ -11,4 +11,4 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.5.0)
 Imports: R6, jsonlite, digest
-Suggests: plumber
+Suggests: plumber, renv
