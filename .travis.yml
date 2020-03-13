@@ -1,0 +1,12 @@
+sudo: required
+
+os:
+  - linux
+
+language: r
+
+install:
+  - echo "hello R"
+
+script:
+  - echo "Script R"
