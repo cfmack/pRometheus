@@ -9,26 +9,82 @@
     ]
   },
   "Packages": {
-    "R6": {
-      "Package": "R6",
-      "Version": "2.3.0",
+    "BH": {
+      "Package": "BH",
+      "Version": "1.72.0-3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "ba743dbe5a0c885a7902aaa023710918"
+      "Hash": "8f9ce74c6417d61f0782cbae5fd2b7b0"
+    },
+    "R6": {
+      "Package": "R6",
+      "Version": "2.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "292b54f8f4b94669b08f94e5acce6be2"
+    },
+    "Rcpp": {
+      "Package": "Rcpp",
+      "Version": "1.0.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f3ca785924863b0e4c8cb23b6a5c75a1"
+    },
+    "crayon": {
+      "Package": "crayon",
+      "Version": "1.3.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0d57bc8e27b7ba9e45dba825ebc0de6b"
     },
     "digest": {
       "Package": "digest",
-      "Version": "0.6.18",
+      "Version": "0.6.25",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "496dd262e1ec64e452151479a74c972f"
+      "Hash": "f697db7d92b7028c4b3436e9603fb636"
+    },
+    "httpuv": {
+      "Package": "httpuv",
+      "Version": "1.5.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f793dad2c9ae14fbb1d22f16f23f8326"
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "1.6",
+      "Version": "1.6.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "bc5739654d032acf531356e32e0d0f54"
+      "Hash": "84b0ee361e2f78d6b7d670db9471c0c5"
+    },
+    "later": {
+      "Package": "later",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "6d927978fc658d24175ce37db635f9e5"
+    },
+    "magrittr": {
+      "Package": "magrittr",
+      "Version": "1.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1bb58822a20301cee84a41678e25d9b7"
+    },
+    "plumber": {
+      "Package": "plumber",
+      "Version": "0.4.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "be585bfab152779520e8f9ac86b122b9"
+    },
+    "promises": {
+      "Package": "promises",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "efbbe62da4709f7040a380c702bc7103"
     },
     "renv": {
       "Package": "renv",
@@ -36,6 +92,20 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "c1a367437d8a8a44bec4b9d4974cb20c"
+    },
+    "rlang": {
+      "Package": "rlang",
+      "Version": "0.4.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1cc1b38e4db40ea6eb19ab8080bbed3b"
+    },
+    "stringi": {
+      "Package": "stringi",
+      "Version": "1.4.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e99d8d656980d2dd416a962ae55aec90"
     }
   }
 }
