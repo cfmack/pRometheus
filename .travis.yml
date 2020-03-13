@@ -6,7 +6,7 @@ os:
 language: r
 
 install:
-  - RScript .build/build.R"
+  - RScript .build/build.R
 
 script:
   - echo "Fin"
