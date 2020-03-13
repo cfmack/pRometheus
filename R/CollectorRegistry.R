@@ -1,6 +1,7 @@
 ######################################################################
-# Prometheus collector registry
-#
+#' Prometheus collector registry
+#'
+#' @importFrom R6 R6Class
 #' @export
 CollectorRegistry <- R6Class(
   "CollectorRegistry",

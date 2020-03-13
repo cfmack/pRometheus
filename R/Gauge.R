@@ -1,6 +1,7 @@
 ###############################################################
 #' Prometheus collector registry
 #'
+#' @importFrom R6 R6Class 
 #' @export
 PrometheusGauge <- R6Class(
   "PrometheusGauge",

@@ -1,6 +1,7 @@
 ######################################################################
-# Prometheus Raw Sample Object
-#
+#' Prometheus Raw Sample Object
+#'
+#' @importFrom R6 R6Class 
 #' @export
 MetricFamilySample <- R6Class(
   "MetricFamilySample",

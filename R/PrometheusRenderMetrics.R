@@ -1,6 +1,7 @@
 ######################################################################
-# Output for Prometheus to parse
-#
+#' Output for Prometheus to parse
+#'
+#' @importFrom R6 R6Class 
 #' @export
 PrometheusRenderMetrics <- R6Class(
   "PrometheusRenderMetrics",

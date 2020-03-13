@@ -1,6 +1,7 @@
 ######################################################################
-# Memory adapter
-#
+#' Memory adapter
+#'
+#' @importFrom R6 R6Class 
 #' @export
 PrometheusMemoryAdapter <- R6Class(
   "PrometheusMemoryAdapter",
