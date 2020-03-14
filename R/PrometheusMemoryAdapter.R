@@ -70,7 +70,7 @@ PrometheusMemoryAdapter <- R6Class(
             name = metric[['meta']][['name']],
             value = sample_value,
             label_names = metric[['meta']][['label_names']],
-            label_values = list("unserialize this thing") #unserialize(jsonlite::base64_dec(parts[1][3]))
+            label_values = unserialize(jsonlite::base64_dec(parts[[1]][3]))
           )
 
           samples <- c(samples, new_sample)

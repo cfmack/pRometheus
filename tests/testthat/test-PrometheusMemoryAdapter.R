@@ -2,7 +2,7 @@ test_that("PrometheusMemoryAdapter", {
   adapter <- PrometheusMemoryAdapter$new()
 
   input_list = list(
-    'name' = "space:name",
+    'name' = "space_name",
     'help' = "Unit tests help",
     'type' = "unit test",
     'labelNames' = list(),
