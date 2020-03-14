@@ -1,19 +1,22 @@
 ######################################################################
 #' Prometheus Raw Sample Object
 #'
-#' @importFrom R6 R6Class 
+#' @importFrom R6 R6Class
 #' @export
 MetricFamilySample <- R6Class(
   "MetricFamilySample",
   public = list(
-    initialize = function() {
+    initialize = function(name, type, help, label_names = list()) {
+      private$name = name
+      private$metric_type = type
+      private$metric_help = help
+      private$label_names = label_names
     },
     getName = function() {
       return(private$name)
     },
     setName = function(val) {
       private$name = val
-      invisible(self)
     },
     getLabelNames = function() {
       return(private$label_names)

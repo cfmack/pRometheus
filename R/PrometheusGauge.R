@@ -1,7 +1,7 @@
 ###############################################################
 #' Prometheus collector registry
 #'
-#' @importFrom R6 R6Class 
+#' @importFrom R6 R6Class
 #' @export
 PrometheusGauge <- R6Class(
   "PrometheusGauge",
@@ -62,10 +62,12 @@ PrometheusGauge <- R6Class(
         'labelValues' = labels,
         'value' = value
       )
+
       private$storate_adapter$updateGauge(input_list)
     },
     inc = function(labels = list()) {
       self$incBy(1, labels)
+      invisible(self)
     },
     decBy = function(value, labels = list()) {
       value <- value * -1

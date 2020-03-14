@@ -4,3 +4,4 @@
 ^\.Rproj\.user$
 ^packrat/
 ^\.Rprofile$
+^examples/

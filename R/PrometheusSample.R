@@ -1,12 +1,16 @@
 ######################################################################
 #' Prometheus Raw Sample Object
 #'
-#' @importFrom R6 R6Class 
+#' @importFrom R6 R6Class
 #' @export
 PrometheusSample <- R6Class(
   "PrometheusSample",
   public = list(
-    initialize = function() {
+    initialize = function(name, value, label_names=list(), label_values=list()) {
+      private$name <- name
+      private$label_names <- label_names
+      private$label_values <- label_values
+      private$sample_value <- value
     },
     getName = function() {
       return(private$name)

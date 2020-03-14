@@ -6,37 +6,35 @@
 CollectorRegistry <- R6Class(
   "CollectorRegistry",
   public = list(
-    initialize = function(storageAdapter = NULL) {
-      if (is.null(storageAdapter)) {
-        storageAdapter = PrometheusMemoryAdapter$new()
+    initialize = function(storage_adapter = NULL) {
+      if (is.null(storage_adapter)) {
+        private$storage_adapter = PrometheusMemoryAdapter$new()
+      } else {
+        private$storage_adapter = storage_adapter
       }
-
-      private$storageAdapter = storageAdapter
     },
     getMetricFamilySamples = function() {
-      return (private$storageAdapter$collect())
+      return (private$storage_adapter$collect())
     },
-    registerGauge = function(namespace, name, help, type, labels = list()) {
+    registerGauge = function(name, help, type, namespace=NULL, labels = list()) {
       id = private$generateMetricIdentifier(namespace, name)
-      if (isset(private$gauges[[id]])) {
+      if (id %in% names(private$gauges)) {
         stop(paste("Metric already defined:" , id))
-
       }
 
-      # new_gauge =
-      #   $this->gauges[$metricIdentifier] = new Gauge(
-      #     $this->storageAdapter,
-      #     $namespace,
-      #     $name,
-      #     $help,
-      #     $labels
-      #   );
-      #   return $this->gauges[$metricIdentifier];
+      new_gauge = PrometheusGauge$new(
+        storage_adapter = private$storage_adapter,
+        namespace = namespace,
+        name = name,
+        help = help,
+        label_names = labels
+      )
 
+      private$gauges[[id]] = new_gauge
     },
-    getGauge = function(namespace, name) {
+    getGauge = function(name, namespace=NULL) {
       id = private$generateMetricIdentifier(namespace, name)
-      if (!isset(private$gauges[[id]])) {
+      if (!(id %in% names(private$gauges))) {
         stop(paste("Metric not found:" , id))
 
       }
@@ -45,9 +43,14 @@ CollectorRegistry <- R6Class(
     }
   ),
   private = list(
-    storageAdapter = NULL,
+    storage_adapter = NULL,
     gauges = list(),
     generateMetricIdentifier = function(namespace, name) {
+
+      if (is.null(namespace)) {
+        return(name)
+      }
+
       return (paste(namespace, name, sep = ":"))
     }
   )

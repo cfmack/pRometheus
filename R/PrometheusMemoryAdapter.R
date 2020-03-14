@@ -1,10 +1,11 @@
 ######################################################################
 #' Memory adapter
 #'
-#' @importFrom R6 R6Class 
+#' @importFrom R6 R6Class
 #' @export
 PrometheusMemoryAdapter <- R6Class(
   "PrometheusMemoryAdapter",
+  lock_objects = FALSE,
   public = list(
     initialize = function() {
     },
@@ -17,20 +18,19 @@ PrometheusMemoryAdapter <- R6Class(
       meta_key <- private$getMetaKey(input_list)
       value_key <- private$getValueKey(input_list)
 
-      if (is.null(private$gauges[[meta_key]])) {
+      if (!(meta_key %in% names(private$gauges))) {
         new_element <-
           list('meta' = private$buildMetaData(input_list),
                'samples' = list())
 
-        private$gauges[[meta_key]] = new_element
-
+        private$gauges[[meta_key]] <- new_element
       }
 
-      if (is.null(private$gauge[[meta_key]][['samples']][[value_key]])) {
-        private$gauge[[meta_key]][['samples']][[value_key]] = 0
+      if (!(value_key %in% names(private$gauges[[meta_key]][['samples']]))) {
+        private$gauges[[meta_key]][['samples']][[value_key]] <- 0
       }
 
-      private$gauge[[meta_key]][['samples']][[value_key]] = private$gauge[[meta_key]][['samples']][[value_key]] + input_list$value
+      private$gauges[[meta_key]][['samples']][[value_key]] = private$gauges[[meta_key]][['samples']][[value_key]] + input_list$value
     }
   ),
   private = list(
@@ -50,10 +50,10 @@ PrometheusMemoryAdapter <- R6Class(
     buildMetaData = function(input_list) {
       return (input_list[c('name', 'help', 'type', 'label_names')])
     },
-    internalCollection = function(input_list) {
+    internalCollect = function(input_list) {
       results = list()
       for (metric in input_list) {
-        family_samples <- MetricFamilySample$new() (
+        family_samples <- MetricFamilySample$new(
           name = metric[['meta']][['name']],
           type = metric[['meta']][['type']],
           help = metric[['meta']][['help']],
@@ -61,9 +61,13 @@ PrometheusMemoryAdapter <- R6Class(
         )
 
         samples = list()
+        print(metric[['samples']])
 
         for (sample_key in names(metric[['samples']])) {
           sample_value <- metric[['samples']][[sample_key]]
+
+          print(sample_key)
+          print(sample_value)
 
           parts <- strsplit(sample_key, ":")
 
@@ -71,7 +75,7 @@ PrometheusMemoryAdapter <- R6Class(
             name = metric[['meta']][['name']],
             value = sample_value,
             label_names = metric[['meta']][['label_names']],
-            label_values = unserialize(jsonlite::base64_dec(parts[1][3]))
+            label_values = list("unserialize this thing") #unserialize(jsonlite::base64_dec(parts[1][3]))
           )
 
           samples <- c(samples, new_sample)
