@@ -13,7 +13,7 @@ test_that("PrometheusMemoryAdapter", {
   adapter$updateGauge(input_list)
 
   collect <- adapter$collect()
-  print(collect)
+  samples <- collect[[1]]$getSamples()
 
-  expect_equal(1, 2)
+  expect_equal(samples[[1]]$getValue(), input_list[['value']])
 })

@@ -11,7 +11,6 @@ PrometheusMemoryAdapter <- R6Class(
     },
     collect = function() {
       metrics <- private$internalCollect(private$gauges)
-
       return(metrics)
     },
     updateGauge = function(input_list) {
@@ -61,13 +60,9 @@ PrometheusMemoryAdapter <- R6Class(
         )
 
         samples = list()
-        print(metric[['samples']])
 
         for (sample_key in names(metric[['samples']])) {
           sample_value <- metric[['samples']][[sample_key]]
-
-          print(sample_key)
-          print(sample_value)
 
           parts <- strsplit(sample_key, ":")
 
