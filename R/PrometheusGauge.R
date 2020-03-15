@@ -55,15 +55,15 @@ PrometheusGauge <- R6Class(
     },
     incBy = function(value, labels = list()) {
       input_list = list(
-        'name' = private$getName(),
-        'help' = private$getHelp(),
-        'type' = private$getType(),
-        'labelNames' = private$getLabelNames(),
-        'labelValues' = labels,
-        'value' = value
+        name = self$getName(),
+        help = self$getHelp(),
+        type = self$getType(),
+        label_names = self$getLabelNames(),
+        label_values = labels,
+        value = value
       )
 
-      private$storate_adapter$updateGauge(input_list)
+      private$storage_adapter$updateGauge(input_list)
     },
     inc = function(labels = list()) {
       self$incBy(1, labels)
