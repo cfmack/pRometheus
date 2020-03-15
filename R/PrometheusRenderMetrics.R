@@ -15,7 +15,7 @@ PrometheusRenderMetrics <- R6Class(
       for (metric in metrics) {
         help <-
           paste("# HELP", metric$getName(), metric$getHelp(), sep = " ")
-        help <-
+        type <-
           paste("# TYPE", metric$getName(), metric$getType(), sep = " ")
 
         output <- paste(output, help, type, sep = "\n")

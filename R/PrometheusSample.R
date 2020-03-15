@@ -42,6 +42,15 @@ PrometheusSample <- R6Class(
     setValue = function(val) {
       private$sample_value = val
       invisible(self)
+    },
+    hasLabelNames = function() {
+      if (is.null(private$label_names)) {
+        return (FALSE)
+      } else if (length(private$label_names) == 0) {
+        return (FALSE)
+      }
+
+      return (TRUE)
     }
   ),
   private = list(
