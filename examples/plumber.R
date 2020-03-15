@@ -2,7 +2,11 @@
 library("pRometheus")
 
 registry <<- CollectorRegistry$new()
-registry$registerGauge('test', 'some_gauge', 'it sets', namespace="my_space")
+registry$registerGauge(
+  name = 'test',
+  help = 'some_gauge',
+  type = 'it sets',
+  namespace="my_space")
 
 #* Echo back the input
 #* @param msg The message to echo

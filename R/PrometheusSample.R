@@ -6,7 +6,10 @@
 PrometheusSample <- R6Class(
   "PrometheusSample",
   public = list(
-    initialize = function(name, value, label_names=list(), label_values=list()) {
+    initialize = function(name,
+                          value,
+                          label_names = list(),
+                          label_values = list()) {
       private$name <- name
       private$label_names <- label_names
       private$label_values <- label_values

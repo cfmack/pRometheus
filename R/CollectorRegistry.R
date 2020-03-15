@@ -16,7 +16,11 @@ CollectorRegistry <- R6Class(
     getMetricFamilySamples = function() {
       return (private$storage_adapter$collect())
     },
-    registerGauge = function(name, help, type, namespace=NULL, labels = list()) {
+    registerGauge = function(name,
+                             help,
+                             type,
+                             namespace = NULL,
+                             labels = list()) {
       id <- private$generateMetricIdentifier(namespace, name)
       if (id %in% names(private$gauges)) {
         stop(paste("Metric already defined:" , id))
@@ -32,7 +36,7 @@ CollectorRegistry <- R6Class(
 
       private$gauges[[id]] <- new_gauge
     },
-    getGauge = function(name, namespace=NULL) {
+    getGauge = function(name, namespace = NULL) {
       id <- private$generateMetricIdentifier(namespace, name)
       if (!(id %in% names(private$gauges))) {
         stop(paste("Metric not found:" , id))

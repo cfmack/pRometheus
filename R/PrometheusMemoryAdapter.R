@@ -8,6 +8,7 @@ PrometheusMemoryAdapter <- R6Class(
   lock_objects = FALSE,
   public = list(
     initialize = function() {
+
     },
     collect = function() {
       metrics <- private$internalCollect(private$gauges)

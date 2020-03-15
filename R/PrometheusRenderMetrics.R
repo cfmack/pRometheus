@@ -1,18 +1,20 @@
 ######################################################################
 #' Output for Prometheus to parse
 #'
-#' @importFrom R6 R6Class 
+#' @importFrom R6 R6Class
 #' @export
 PrometheusRenderMetrics <- R6Class(
   "PrometheusRenderMetrics",
   public = list(
     initialize = function() {
+
     },
     render = function(metrics) {
       output <- ""
 
       for (metric in metrics) {
-        help <- paste("# HELP", metric$getName(), metric$getHelp(), sep = " ")
+        help <-
+          paste("# HELP", metric$getName(), metric$getHelp(), sep = " ")
         help <-
           paste("# TYPE", metric$getName(), metric$getType(), sep = " ")
 
