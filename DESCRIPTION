@@ -14,5 +14,6 @@ Imports: R6, jsonlite, digest
 Suggests: 
     plumber,
     renv,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    stringi
 RoxygenNote: 7.1.0
