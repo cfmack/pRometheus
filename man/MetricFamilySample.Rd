@@ -30,7 +30,7 @@ Prometheus Raw Sample Object
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$new(name, type, help, label_names = list())}\if{html}{\out{</div>}}
 }
 
 }

@@ -20,6 +20,7 @@ Prometheus Raw Sample Object
 \item \href{#method-setLabelValues}{\code{PrometheusSample$setLabelValues()}}
 \item \href{#method-getValue}{\code{PrometheusSample$getValue()}}
 \item \href{#method-setValue}{\code{PrometheusSample$setValue()}}
+\item \href{#method-hasLabelNames}{\code{PrometheusSample$hasLabelNames()}}
 \item \href{#method-clone}{\code{PrometheusSample$clone()}}
 }
 }
@@ -28,7 +29,7 @@ Prometheus Raw Sample Object
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$new(name, value, label_names = list(), label_values = list())}\if{html}{\out{</div>}}
 }
 
 }
@@ -101,6 +102,15 @@ Prometheus Raw Sample Object
 \subsection{Method \code{setValue()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$setValue(val)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-hasLabelNames"></a>}}
+\if{latex}{\out{\hypertarget{method-hasLabelNames}{}}}
+\subsection{Method \code{hasLabelNames()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$hasLabelNames()}\if{html}{\out{</div>}}
 }
 
 }

@@ -1,20 +1,41 @@
-install.packages("devtools")
-install.packages("roxygen2")
 install.packages("renv")
 
-library("devtools")
-library("roxygen2")
 library("renv")
 
-build_info <- function() {
-  print("***** Build Info *****")
-  print(paste("TRAVIS_BRANCH:", Sys.getenv(x="TRAVIS_BRANCH")))
-  print(paste("TRAVIS_BUILD_NUMBER:", Sys.getenv(x="TRAVIS_BUILD_NUMBER")))
-  print(paste("TRAVIS_JOB_NUMBER:", Sys.getenv(x="TRAVIS_JOB_NUMBER")))
-}
-build_info()
-
 renv::restore()
+
+library("devtools")
+library("desc")
+library("roxygen2")
+
+update_version = function() {
+  desc <- description$new()
+
+  version <- desc$get("Version")
+  version_parts <- strsplit(version, "[.]")
+
+  # keep major and minor
+  version <- paste(version_parts[[1]][1], version_parts[[1]][2], sep=".")
+
+
+  # update patch version based on TRAVIS BUILD NUMBERS
+  patch <- Sys.getenv(x="TRAVIS_BUILD_NUMBER")
+  if (patch == "") {
+    patch <- 0
+  }
+
+  version <- paste(version, patch, sep=".")
+
+  # signal an unrelease branch in CRAN by using 9000
+  if (Sys.getenv(x="TRAVIS_BRANCH") != "master") {
+    version <- paste(version, "9000", sep=".")
+  }
+
+  desc$set("Version", version)
+  desc$write()
+}
+
+update_version()
 
 devtools::document(roclets=c('rd', 'collate', 'namespace'))
 devtools::build(".")

@@ -23,7 +23,7 @@ Prometheus collector registry
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$new(storageAdapter = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$new(storage_adapter = NULL)}\if{html}{\out{</div>}}
 }
 
 }
@@ -41,7 +41,13 @@ Prometheus collector registry
 \if{latex}{\out{\hypertarget{method-registerGauge}{}}}
 \subsection{Method \code{registerGauge()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$registerGauge(namespace, name, help, type, labels = list())}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$registerGauge(
+  name,
+  help,
+  type,
+  namespace = NULL,
+  labels = list()
+)}\if{html}{\out{</div>}}
 }
 
 }
@@ -50,7 +56,7 @@ Prometheus collector registry
 \if{latex}{\out{\hypertarget{method-getGauge}{}}}
 \subsection{Method \code{getGauge()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$getGauge(namespace, name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$getGauge(name, namespace = NULL)}\if{html}{\out{</div>}}
 }
 
 }
