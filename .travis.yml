@@ -6,6 +6,9 @@ install:
 - Rscript .build/build.R
 script:
 - echo "Fin"
+branches:
+  except:
+  - /^untagged*/
 deploy:
   provider: releases
   api_key:
@@ -14,3 +17,4 @@ deploy:
   file: pRometheus_*.tar.gz 
   on:
     repo: cfmack/pRometheus
+    tags: true

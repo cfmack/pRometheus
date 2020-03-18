@@ -17,8 +17,10 @@ update_version = function() {
   version_parts <- strsplit(version, "[.]")
 
   # keep major and minor
-  version <- paste(version_parts[[1]][1], version_parts[[1]][2], sep=".")
-
+  version <- Sys.getenv(x="TRAVIS_TAG")
+  if (version == "") {
+    version <- paste(version_parts[[1]][1], version_parts[[1]][2], sep=".")
+  }
 
   # update patch version based on TRAVIS BUILD NUMBERS
   patch <- Sys.getenv(x="TRAVIS_BUILD_NUMBER")
