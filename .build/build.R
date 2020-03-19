@@ -14,25 +14,20 @@ update_version = function() {
   desc <- description$new()
 
   version <- desc$get("Version")
-  version_parts <- strsplit(version, "[.]")
 
   # keep major and minor
   version <- Sys.getenv(x="TRAVIS_TAG")
   if (version == "") {
-    version <- paste(version_parts[[1]][1], version_parts[[1]][2], sep=".")
+  	version <- "0.0.1"
   }
 
-  # update patch version based on TRAVIS BUILD NUMBERS
-  patch <- Sys.getenv(x="TRAVIS_BUILD_NUMBER")
-  if (patch == "") {
-    patch <- 0
-  }
-
-  version <- paste(version, patch, sep=".")
 
   # signal an unrelease branch in CRAN by using 9000
   if (Sys.getenv(x="TRAVIS_BRANCH") != "master") {
     version <- paste(version, "9000", sep=".")
+  }
+  else {
+    version <- paste(version, "0", sep=".")
   }
 
   desc$set("Version", version)
