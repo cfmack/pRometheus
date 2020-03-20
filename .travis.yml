@@ -15,6 +15,6 @@ deploy:
     secure: Im/zpxFoQQB7C5EBhYWjMaLmTWJNS+q3/s33OFbXldq7iLHLDmwgYhPGzpZtHQFNBW/TCL46GMsPwy3SLlmq7NQo+JOAyfV7INqDd5w1JlRCXUW+Z47VrKSaFoD/b1bcwLEFwJD8PoWPZFnLDI//V9i8AuYuiQ2sfioj1XjLA6IAFOhwozTp0OCQnrmvf2B6rUk1x5n+yv07IGe2p3vI+4x/bQMoMOWWd03W9yMLXSF4zBHkuF3V87fSvlZTuEjKw46sN60geCz+qu+aa3fI6RA924WyU8VrZq8tkMX/f48tbJWAZYrIglpa16gmLb+FIyAMfuYyQTC27CsHwqL3N1/iWAMfRgdwXCpoJUoVF9L2tRpM2GfB3pBOfNiuP69fmBIcuha01jdD4pa89VAZWtwYpD/muOsj1Bo7JuZwHS0xRJBkjdI0WnTHZa/EzJO0mB1G/B61wA4t0SiSKfy38/WoJ74+WF0KExOShKEMihmeU9tMnfu0yefKP/k9W4ht1PtUvscbytvCWPUdXoZN30gIvweheS5Mg7eG3nzmzrVa3epWm9vJ7/+UQioZvsnwESMSsHOOD3EJeBslFLWAMap1sOiU4RNeNj6j42tosQ5T2NtGW1h1oP9l6mDqQKpvWMf5G9BmPwlxfYYnj4yTxTZh444nMfkxC8Aadlz9Swc=
   file_glob: true
   file: pRometheus_*.tar.gz 
+  skip_cleanup: true
   on:
-    repo: cfmack/pRometheus
     tags: true
