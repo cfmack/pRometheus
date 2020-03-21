@@ -7,11 +7,12 @@ PrometheusMemoryAdapter <- R6Class(
   "PrometheusMemoryAdapter",
   lock_objects = FALSE,
   public = list(
-    initialize = function() {
-
-    },
+    initialize = function() {},
     collect = function() {
-      metrics <- private$internalCollect(private$gauges)
+      collected_gauges <- private$internalCollect(private$gauges)
+      collected_counters <- private$internalCollect(private$counters)
+
+      metrics <- c(collected_gauges, collected_counters)
       return(metrics)
     },
     updateGauge = function(input_list) {
@@ -31,10 +32,29 @@ PrometheusMemoryAdapter <- R6Class(
       }
 
       private$gauges[[meta_key]][['samples']][[value_key]] = private$gauges[[meta_key]][['samples']][[value_key]] + input_list$value
+    },
+    updateCounter = function(input_list) {
+      meta_key <- private$getMetaKey(input_list)
+      value_key <- private$getValueKey(input_list)
+
+      if (!(meta_key %in% names(private$counters))) {
+        new_element <-
+          list('meta' = private$buildMetaData(input_list),
+               'samples' = list())
+
+        private$counters[[meta_key]] <- new_element
+      }
+
+      if (!(value_key %in% names(private$counters[[meta_key]][['samples']]))) {
+        private$counters[[meta_key]][['samples']][[value_key]] <- 0
+      }
+
+      private$counters[[meta_key]][['samples']][[value_key]] = private$counters[[meta_key]][['samples']][[value_key]] + input_list$value
     }
   ),
   private = list(
     gauges = list(),
+    counters = list(),
     getMetaKey = function(input_list) {
       return (paste(input_list$type, input_list$name, 'meta', sep = ":"))
     },

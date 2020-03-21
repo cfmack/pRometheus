@@ -44,11 +44,41 @@ CollectorRegistry <- R6Class(
       }
 
       return (private$gauges[[id]])
+    },
+    registerCounter = function(name,
+                             help,
+                             namespace = NULL,
+                             labels = list()) {
+
+      id <- private$generateMetricIdentifier(namespace, name)
+      if (id %in% names(private$counters)) {
+        stop(paste("Metric already defined:" , id))
+      }
+
+      new_counter = PrometheusCounter$new(
+        storage_adapter = private$storage_adapter,
+        namespace = namespace,
+        name = name,
+        help = help,
+        label_names = labels
+      )
+
+      private$counters[[id]] <- new_counter
+    },
+    getCounter = function(name, namespace = NULL) {
+      id <- private$generateMetricIdentifier(namespace, name)
+      if (!(id %in% names(private$counters))) {
+        stop(paste("Metric not found:" , id))
+
+      }
+
+      return (private$counters[[id]])
     }
   ),
   private = list(
     storage_adapter = NULL,
     gauges = list(),
+    counters = list(),
     generateMetricIdentifier = function(namespace, name) {
       if (is.null(namespace)) {
         return(name)

@@ -6,9 +6,7 @@
 PrometheusRenderMetrics <- R6Class(
   "PrometheusRenderMetrics",
   public = list(
-    initialize = function() {
-
-    },
+    initialize = function() {},
     render = function(metrics) {
       output <- ""
 

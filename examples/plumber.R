@@ -15,6 +15,11 @@ registry$registerGauge(
   labels = 'color'
 )
 
+registry$registerCounter(
+  name = 'my_counter',
+  help = 'some counter',
+  namespace = "my_space"
+)
 
 #* Echo back the input
 #* @param msg The message to echo
@@ -24,6 +29,14 @@ function(msg = "") {
   gauge$inc()
 
   list(msg = paste0("The message is: '", msg, "'"))
+}
+
+#* Increment a counter
+#* @get /count
+function() {
+  count <- registry$getCounter(name = 'my_counter', namespace = "my_space")
+  count$inc()
+  return("Count me!")
 }
 
 #* Plot a histogram

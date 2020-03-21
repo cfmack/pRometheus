@@ -7,7 +7,7 @@ Port of [prometheus_client_php](https://github.com/endclothing/prometheus_client
 
 ## Background
 
-This library currently only uses a in memory adapter and gauges.  If you would like to contribute and create a redis or other backend, please do.   
+This library currently only uses a in memory adapter with counters or gauges.  If you would like to contribute and create a redis or other backend, please do.   
 
 
 ## How to install
@@ -35,9 +35,10 @@ registry$registerGauge(
   namespace = "my_space"
 )
 
-registry$registerGauge(
+# label names are optional on both counters and gauges
+registry$registerCounter(
   name = 'plot_gauge',
-  help = 'some_gauge',
+  help = 'some counter',
   namespace = "my_space",
   labels = 'color'
 )
@@ -51,7 +52,11 @@ After that, depending on your functionality, you can adjust of your metric where
   gauge$inc()
 
   gauge <- registry$getGauge(name = 'plot_gauge', namespace = "my_space")
-  gauge$incBy(2, list('red'))
+  gauge$decBy(2, list('red'))
+  
+  counter <- registry$getCounter(name = 'test counter', namespace = "my_space")
+  counter$inc()
+  
 ```
 
 ## How to publish to Promtheus
