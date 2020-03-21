@@ -22,6 +22,18 @@ PrometheusSample <- R6Class(
         )
       }
 
+      if (length(label_values) > 0) {
+        vector_check <- validUTF8(as.vector(unlist(label_values)))
+        valid <- all(vector_check)
+        if (valid == FALSE) {
+          stop(paste(
+              name,
+              "has non-UTF8 encode label values"
+            )
+          )
+        }
+      }
+
       private$name <- name
       private$label_names <- label_names
       private$label_values <- label_values

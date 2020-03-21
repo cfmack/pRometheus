@@ -29,4 +29,20 @@ test_that("PrometheusSample", {
   }
 
   expect_error(create_error())
+
+  # expect an error when values contain invalid characters
+  create_error <- function() {
+    values <- c("fa\xE7ile")
+    Encoding(values) <- c("latin1")
+
+    pRometheus::PrometheusSample$new(
+      name = "non-utf8 list",
+      value = 5,
+      label_names = list("color"),
+      label_values = as.list(values)
+    )
+  }
+
+  expect_error(create_error())
+
 })
