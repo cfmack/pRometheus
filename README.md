@@ -36,11 +36,18 @@ registry$registerGauge(
 )
 
 # label names are optional on both counters and gauges
-registry$registerCounter(
+
+registry$registerGauge(
   name = 'plot_gauge',
-  help = 'some counter',
+  help = 'some gauge with label',
   namespace = "my_space",
   labels = 'color'
+)
+
+registry$registerCounter(
+  name = 'test counter',
+  help = 'some counter',
+  namespace = "my_space"
 )
 
 ```
