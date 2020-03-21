@@ -13,9 +13,11 @@ deploy:
   provider: releases
   api_key:
     secure: PkexaeMOFnOeiwnmPI9xP/oygNemvoqfZdNWO9fmFQLYQrVlVJBuE9E+8fsOMNbBL43wMdV8z0uoDg0YO8PJQd7QoUg693p2kajF7ho/anRByBjJVsO62Z0GLlPzQR6S075NV6qpZY3gkcEuGIYlW9eQHuIyO+NZboUqtJdMcaPwW8wKdyTxddytdqB0ma+rF3GvevkYBWV9nwpJ0kYhgJrNH2KiJDE9+narm+mLw3K2ePLjc0Frc4fH4ZnV/phLe4Ij5vEhb3Q3nAMUeBH4Ov+itbpVeTit6XvWXiumRNv8Z+vt1DMpuqgsiW8T6WkFi7dapwerrftSMEYwT7qpg0r22vD80xkHdI166qiRAMf7533Lya7rhb/8UoJ19D5s5h11RppPa2kS37F/diHkllM93LRVEGlkU4O2FykinO77v6M35BiQjuycCDoJfLDACYXddrch4ypFPFWLRW/LskJCQwu+mkmrbgzNcToCKua9Ls+fUGYPbyqait7VsDB+rR1NFN4jyZg4Jgh6KKCNClqGqXXHOwdNW8tN34urNtVX1wkU5a3yDQwHTmFJ2+lT9CUz8OObb+3mKVP2CNNqJ06+HaYtf4l/hf+cuyGf3PTjuJ+LY2O6J9jrjJ2889pqXczl+IkesgzWbuaFqrVlgBZf8vnXVBOV14CRsfjbxB0=
-file_glob: true
+  file_glob: true
   file: pRometheus_*.tar.gz 
+  skip_cleanup: true
   on:
+    tags: true
     repo: cfmack/pRometheus
     tags: true
 
