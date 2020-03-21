@@ -23,7 +23,8 @@ update_version = function() {
 
 
   # signal an unrelease branch in CRAN by using 9000
-  if (Sys.getenv(x="TRAVIS_BRANCH") != "master") {
+  if (Sys.getenv(x="TRAVIS_BRANCH") != "master" 
+	&& Sys.getenv(x="TRAVIS_TAG") == "") {
     version <- paste(version, "9000", sep=".")
   }
   else {
