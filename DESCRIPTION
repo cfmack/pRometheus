@@ -1,7 +1,7 @@
 Package: pRometheus
 Type: Package
 Title: Client Prometheus Library for R
-Version: 0.1.0
+Version: 0.1.4.9000
 Author: Charles Mack
 Maintainer: Charles Mack <c.f.mack@gmail.com>
 Description: More about what it does (maybe more than one line)

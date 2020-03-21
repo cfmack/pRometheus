@@ -18,9 +18,9 @@ CollectorRegistry <- R6Class(
     },
     registerGauge = function(name,
                              help,
-                             type,
                              namespace = NULL,
                              labels = list()) {
+
       id <- private$generateMetricIdentifier(namespace, name)
       if (id %in% names(private$gauges)) {
         stop(paste("Metric already defined:" , id))
