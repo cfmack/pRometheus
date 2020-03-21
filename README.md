@@ -32,14 +32,12 @@ registry <<- CollectorRegistry$new()
 registry$registerGauge(
   name = 'test',
   help = 'some_gauge',
-  type = 'it sets',
   namespace = "my_space"
 )
 
 registry$registerGauge(
   name = 'plot_gauge',
   help = 'some_gauge',
-  type = 'it sets',
   namespace = "my_space",
   labels = 'color'
 )
