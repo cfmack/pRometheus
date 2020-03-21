@@ -10,6 +10,18 @@ PrometheusSample <- R6Class(
                           value,
                           label_names = list(),
                           label_values = list()) {
+      if (length(label_names) != length(label_values)) {
+        stop(paste(
+            name,
+            "had differing label names (",
+            length(label_names),
+            ") than label values (",
+            length(label_values),
+            ")"
+          )
+        )
+      }
+
       private$name <- name
       private$label_names <- label_names
       private$label_values <- label_values
@@ -18,23 +30,11 @@ PrometheusSample <- R6Class(
     getName = function() {
       return(private$name)
     },
-    setName = function(val) {
-      private$name = val
-      invisible(self)
-    },
     getLabelNames = function() {
       return(private$label_names)
     },
-    setLabelNames = function(val) {
-      private$label_names = val
-      invisible(self)
-    },
     getLabelValues = function() {
       return(private$label_values)
-    },
-    setLabelValues = function(val) {
-      private$label_values = val
-      invisible(self)
     },
     getValue = function() {
       return(private$sample_value)
