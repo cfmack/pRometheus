@@ -13,11 +13,8 @@ Prometheus Raw Sample Object
 \itemize{
 \item \href{#method-new}{\code{PrometheusSample$new()}}
 \item \href{#method-getName}{\code{PrometheusSample$getName()}}
-\item \href{#method-setName}{\code{PrometheusSample$setName()}}
 \item \href{#method-getLabelNames}{\code{PrometheusSample$getLabelNames()}}
-\item \href{#method-setLabelNames}{\code{PrometheusSample$setLabelNames()}}
 \item \href{#method-getLabelValues}{\code{PrometheusSample$getLabelValues()}}
-\item \href{#method-setLabelValues}{\code{PrometheusSample$setLabelValues()}}
 \item \href{#method-getValue}{\code{PrometheusSample$getValue()}}
 \item \href{#method-setValue}{\code{PrometheusSample$setValue()}}
 \item \href{#method-hasLabelNames}{\code{PrometheusSample$hasLabelNames()}}
@@ -43,15 +40,6 @@ Prometheus Raw Sample Object
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-setName"></a>}}
-\if{latex}{\out{\hypertarget{method-setName}{}}}
-\subsection{Method \code{setName()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$setName(val)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getLabelNames"></a>}}
 \if{latex}{\out{\hypertarget{method-getLabelNames}{}}}
 \subsection{Method \code{getLabelNames()}}{
@@ -61,29 +49,11 @@ Prometheus Raw Sample Object
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-setLabelNames"></a>}}
-\if{latex}{\out{\hypertarget{method-setLabelNames}{}}}
-\subsection{Method \code{setLabelNames()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$setLabelNames(val)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getLabelValues"></a>}}
 \if{latex}{\out{\hypertarget{method-getLabelValues}{}}}
 \subsection{Method \code{getLabelValues()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$getLabelValues()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-setLabelValues"></a>}}
-\if{latex}{\out{\hypertarget{method-setLabelValues}{}}}
-\subsection{Method \code{setLabelValues()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$setLabelValues(val)}\if{html}{\out{</div>}}
 }
 
 }

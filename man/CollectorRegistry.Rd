@@ -15,6 +15,8 @@ Prometheus collector registry
 \item \href{#method-getMetricFamilySamples}{\code{CollectorRegistry$getMetricFamilySamples()}}
 \item \href{#method-registerGauge}{\code{CollectorRegistry$registerGauge()}}
 \item \href{#method-getGauge}{\code{CollectorRegistry$getGauge()}}
+\item \href{#method-registerCounter}{\code{CollectorRegistry$registerCounter()}}
+\item \href{#method-getCounter}{\code{CollectorRegistry$getCounter()}}
 \item \href{#method-clone}{\code{CollectorRegistry$clone()}}
 }
 }
@@ -41,13 +43,7 @@ Prometheus collector registry
 \if{latex}{\out{\hypertarget{method-registerGauge}{}}}
 \subsection{Method \code{registerGauge()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$registerGauge(
-  name,
-  help,
-  type,
-  namespace = NULL,
-  labels = list()
-)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$registerGauge(name, help, namespace = NULL, labels = list())}\if{html}{\out{</div>}}
 }
 
 }
@@ -57,6 +53,29 @@ Prometheus collector registry
 \subsection{Method \code{getGauge()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$getGauge(name, namespace = NULL)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-registerCounter"></a>}}
+\if{latex}{\out{\hypertarget{method-registerCounter}{}}}
+\subsection{Method \code{registerCounter()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$registerCounter(
+  name,
+  help,
+  namespace = NULL,
+  labels = list()
+)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getCounter"></a>}}
+\if{latex}{\out{\hypertarget{method-getCounter}{}}}
+\subsection{Method \code{getCounter()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$getCounter(name, namespace = NULL)}\if{html}{\out{</div>}}
 }
 
 }

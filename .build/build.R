@@ -13,14 +13,12 @@ library("roxygen2")
 update_version = function() {
   desc <- description$new()
 
-  version <- desc$get("Version")
 
   # keep major and minor
   version <- Sys.getenv(x="TRAVIS_TAG")
   if (version == "") {
-  	version <- "0.0.1"
+    version <- desc$get("Version")
   }
-
 
   # signal an unrelease branch in CRAN by using 9000
   if (Sys.getenv(x="TRAVIS_BRANCH") != "master" 

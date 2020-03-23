@@ -5,3 +5,5 @@
 ^packrat/
 ^\.Rprofile$
 ^examples/
+^.build/
+^.travis.yml$

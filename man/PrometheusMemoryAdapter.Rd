@@ -14,6 +14,7 @@ Memory adapter
 \item \href{#method-new}{\code{PrometheusMemoryAdapter$new()}}
 \item \href{#method-collect}{\code{PrometheusMemoryAdapter$collect()}}
 \item \href{#method-updateGauge}{\code{PrometheusMemoryAdapter$updateGauge()}}
+\item \href{#method-updateCounter}{\code{PrometheusMemoryAdapter$updateCounter()}}
 \item \href{#method-clone}{\code{PrometheusMemoryAdapter$clone()}}
 }
 }
@@ -41,6 +42,15 @@ Memory adapter
 \subsection{Method \code{updateGauge()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusMemoryAdapter$updateGauge(input_list)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-updateCounter"></a>}}
+\if{latex}{\out{\hypertarget{method-updateCounter}{}}}
+\subsection{Method \code{updateCounter()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PrometheusMemoryAdapter$updateCounter(input_list)}\if{html}{\out{</div>}}
 }
 
 }
