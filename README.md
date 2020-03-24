@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.com/cfmack/pRometheus.svg?branch=master)](https://travis-ci.com/cfmack/pRometheus)
 
 # pRometheus
 Prometheus Client Library for R and Plumber

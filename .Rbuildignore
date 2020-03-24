@@ -7,3 +7,4 @@
 ^examples/
 ^.build/
 ^.travis.yml$
+^STATUS.md$
