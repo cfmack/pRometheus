@@ -2,11 +2,35 @@
 % Please edit documentation in R/PrometheusSample.R
 \name{PrometheusSample}
 \alias{PrometheusSample}
-\title{Prometheus Raw Sample Object}
+\title{Prometheus Sample R6 Object}
 \description{
-Prometheus Raw Sample Object
+Classic data object to encapsulate a sampling of a metric.   You likely will not interact witht this object
+}
+\examples{
 
-Prometheus Raw Sample Object
+## ------------------------------------------------
+## Method `PrometheusSample$new`
+## ------------------------------------------------
+
+sample <- PrometheusSample$new("sample name", 10)
+Getter for the sample name
+
+
+## ------------------------------------------------
+## Method `PrometheusSample$getName`
+## ------------------------------------------------
+
+sample <- PrometheusSample$new("sample name", 10)
+print(sample$getName()) # 'sample name'
+Getter for the label names
+
+
+## ------------------------------------------------
+## Method `PrometheusSample$hasLabelNames`
+## ------------------------------------------------
+
+sample <- PrometheusSample$new("sample name", 10, list("colors"), list("red"))
+sample$hasLabelNames() # TRUE
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -29,6 +53,32 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$new(name, value, label_names = list(), label_values = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name of the sample, combined in other functions or R6 objects with namespace}
+
+\item{\code{value}}{the actual value of the sample}
+
+\item{\code{label_names}}{the name of the labels being passed in}
+
+\item{\code{label_values}}{the actual values of the labels.  This must be UTF-8 encoded and the same number of labels}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+instance of PrometheusSample
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{sample <- PrometheusSample$new("sample name", 10)
+Getter for the sample name
+
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getName"></a>}}
@@ -36,6 +86,20 @@ Prometheus Raw Sample Object
 \subsection{Method \code{getName()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$getName()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+fully qualified name of the sample
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{sample <- PrometheusSample$new("sample name", 10)
+print(sample$getName()) # 'sample name'
+Getter for the label names
+
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -47,6 +111,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$getLabelNames()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+list of label names in the sample
+Getter for the label values
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getLabelValues"></a>}}
@@ -56,6 +124,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$getLabelValues()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+list of label values in the sample
+Getter for the sample value
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getValue"></a>}}
@@ -65,6 +137,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$getValue()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+list of sample values in the sample
+Setter for the sample value
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-setValue"></a>}}
@@ -74,6 +150,17 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$setValue(val)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{val}}{value to actually set}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+self
+Helper function to check if this sample has labels by checking label names
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-hasLabelNames"></a>}}
@@ -81,6 +168,18 @@ Prometheus Raw Sample Object
 \subsection{Method \code{hasLabelNames()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusSample$hasLabelNames()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+bool if sample has label_names
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{sample <- PrometheusSample$new("sample name", 10, list("colors"), list("red"))
+sample$hasLabelNames() # TRUE
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
