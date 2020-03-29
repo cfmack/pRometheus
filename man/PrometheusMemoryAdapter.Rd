@@ -4,9 +4,7 @@
 \alias{PrometheusMemoryAdapter}
 \title{Memory adapter}
 \description{
-Memory adapter
-
-Memory adapter
+Internal memory structure for storing Prometheus metrics
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -26,6 +24,10 @@ Memory adapter
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusMemoryAdapter$new()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+instance of PrometheusMemoryAdapter
+Gather up all known metric samples
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-collect"></a>}}
@@ -35,6 +37,10 @@ Memory adapter
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusMemoryAdapter$collect()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+vector of metric samples
+Upsert a given gauge in memory
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-updateGauge"></a>}}
@@ -44,6 +50,17 @@ Memory adapter
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusMemoryAdapter$updateGauge(input_list)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{input_list}}{list of values needed to update a gauge}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+PrometheusGauge being updated
+Upsert a given counter in memory
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-updateCounter"></a>}}
@@ -53,6 +70,16 @@ Memory adapter
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusMemoryAdapter$updateCounter(input_list)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{input_list}}{list of values needed to update a counter}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+PrometheusCounter being updated
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

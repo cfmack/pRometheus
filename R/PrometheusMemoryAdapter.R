@@ -1,13 +1,21 @@
 ######################################################################
 #' Memory adapter
 #'
+#' Internal memory structure for storing Prometheus metrics
 #' @importFrom R6 R6Class
 #' @export
 PrometheusMemoryAdapter <- R6Class(
   "PrometheusMemoryAdapter",
   lock_objects = FALSE,
   public = list(
+    #' Initializing PrometheusMemoryAdapter
+    #'
+    #' @return instance of PrometheusMemoryAdapter
     initialize = function() {},
+
+    #' Gather up all known metric samples
+    #'
+    #' @return vector of metric samples
     collect = function() {
       collected_gauges <- private$internalCollect(private$gauges)
       collected_counters <- private$internalCollect(private$counters)
@@ -15,6 +23,11 @@ PrometheusMemoryAdapter <- R6Class(
       metrics <- c(collected_gauges, collected_counters)
       return(metrics)
     },
+
+    #' Upsert a given gauge in memory
+    #'
+    #' @param input_list list of values needed to update a gauge
+    #' @return PrometheusGauge being updated
     updateGauge = function(input_list) {
       meta_key <- private$getMetaKey(input_list)
       value_key <- private$getValueKey(input_list)
@@ -33,6 +46,11 @@ PrometheusMemoryAdapter <- R6Class(
 
       private$gauges[[meta_key]][['samples']][[value_key]] = private$gauges[[meta_key]][['samples']][[value_key]] + input_list$value
     },
+
+    #' Upsert a given counter in memory
+    #'
+    #' @param input_list list of values needed to update a counter
+    #' @return PrometheusCounter being updated
     updateCounter = function(input_list) {
       meta_key <- private$getMetaKey(input_list)
       value_key <- private$getValueKey(input_list)
