@@ -1,12 +1,26 @@
 ######################################################################
 #' Output for Prometheus to parse
 #'
+#' Generally call this as a /metrics end point in plumber
+#'
 #' @importFrom R6 R6Class
 #' @export
 PrometheusRenderMetrics <- R6Class(
   "PrometheusRenderMetrics",
   public = list(
+    #' Initializing PrometheusRenderMetrics
+    #'
+    #' @return instance of PrometheusRenderMetrics
     initialize = function() {},
+
+    #' Render text in the Prometheus format
+    #'
+    #' @param metrics list of MetricFamilySample
+    #' @return string
+    #' @examples
+    #' registry <<- CollectorRegistry$new()
+    #' renderer <- PrometheusRenderMetrics$new()
+    #' out <- renderer$render(registry$getMetricFamilySamples())
     render = function(metrics) {
       output <- ""
 

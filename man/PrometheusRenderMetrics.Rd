@@ -4,9 +4,17 @@
 \alias{PrometheusRenderMetrics}
 \title{Output for Prometheus to parse}
 \description{
-Output for Prometheus to parse
+Generally call this as a /metrics end point in plumber
+}
+\examples{
 
-Output for Prometheus to parse
+## ------------------------------------------------
+## Method `PrometheusRenderMetrics$render`
+## ------------------------------------------------
+
+registry <<- CollectorRegistry$new()
+renderer <- PrometheusRenderMetrics$new()
+out <- renderer$render(registry$getMetricFamilySamples())
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -24,6 +32,10 @@ Output for Prometheus to parse
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusRenderMetrics$new()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+instance of PrometheusRenderMetrics
+Render text in the Prometheus format
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-render"></a>}}
@@ -31,6 +43,26 @@ Output for Prometheus to parse
 \subsection{Method \code{render()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusRenderMetrics$render(metrics)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{metrics}}{list of MetricFamilySample}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+string
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{registry <<- CollectorRegistry$new()
+renderer <- PrometheusRenderMetrics$new()
+out <- renderer$render(registry$getMetricFamilySamples())
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
