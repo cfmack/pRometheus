@@ -4,9 +4,25 @@
 \alias{PrometheusCounter}
 \title{Prometheus Counter implementation}
 \description{
-Prometheus Counter implementation
+These objects only increase in value
+}
+\examples{
 
-Prometheus Counter implementation
+## ------------------------------------------------
+## Method `PrometheusCounter$incBy`
+## ------------------------------------------------
+
+my_counter$incBy(3)
+my_colors$incBy(3, list('red'))
+increment the counter by a 1
+
+
+## ------------------------------------------------
+## Method `PrometheusCounter$inc`
+## ------------------------------------------------
+
+my_counter$inc()
+my_colors$inc(list('red'))
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -37,6 +53,25 @@ Prometheus Counter implementation
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{storage_adapter}}{instance of the storage adapter to how you want to persist metrics}
+
+\item{\code{name}}{name of the counter metric you are collecting}
+
+\item{\code{help}}{helper text to display to Prometheus}
+
+\item{\code{namespace}}{mechanism to scope counter name}
+
+\item{\code{label_names}}{the names of the labels.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+instance of PrometheusCounter
+Getter for the type, which will always be 'counter'
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getType"></a>}}
@@ -46,6 +81,12 @@ Prometheus Counter implementation
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$getType()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string of 'counter'
+Getter for the scoped name of the counter
+
+This could include a concatenated namespace
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getName"></a>}}
@@ -55,6 +96,10 @@ Prometheus Counter implementation
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$getName()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string of name text
+Getter for the helper text
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getHelp"></a>}}
@@ -64,6 +109,10 @@ Prometheus Counter implementation
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$getHelp()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string of helper text
+Getter for the label names
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getLabelNames"></a>}}
@@ -73,6 +122,10 @@ Prometheus Counter implementation
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$getLabelNames()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+list of label names in the counter
+Getter for an adapter usaged key to include name, namespace, and label_names
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getKey"></a>}}
@@ -82,6 +135,10 @@ Prometheus Counter implementation
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$getKey()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string to uniquely identify the counter
+Setter for the value of counter
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set"></a>}}
@@ -91,6 +148,16 @@ Prometheus Counter implementation
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$set(value, labels = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value to set the counter to}
+
+\item{\code{labels}}{list of label values, which must match to the same number of label names
+increment the counter by a discrete value}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-incBy"></a>}}
@@ -100,6 +167,26 @@ Prometheus Counter implementation
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$incBy(value, labels = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value to implement the counter by}
+
+\item{\code{labels}}{list of label values, which must match to the same number of label names}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{my_counter$incBy(3)
+my_colors$incBy(3, list('red'))
+increment the counter by a 1
+
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inc"></a>}}
@@ -107,6 +194,22 @@ Prometheus Counter implementation
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusCounter$inc(labels = list())}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{labels}}{list of label values, which must match to the same number of label names}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{my_counter$inc()
+my_colors$inc(list('red'))
+}
+\if{html}{\out{</div>}}
+
 }
 
 }

@@ -4,9 +4,65 @@
 \alias{CollectorRegistry}
 \title{Prometheus collector registry}
 \description{
-Prometheus collector registry
+Allows an object for collecting and registering gauges, counters, etc
+}
+\examples{
 
-Prometheus collector registry
+## ------------------------------------------------
+## Method `CollectorRegistry$new`
+## ------------------------------------------------
+
+registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+Return the list of samples CollectorRegistry, typically to render after
+
+
+## ------------------------------------------------
+## Method `CollectorRegistry$getMetricFamilySamples`
+## ------------------------------------------------
+
+registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+renderer <- PrometheusRenderMetrics$new()
+out <- renderer$render(registry$getMetricFamilySamples())
+Registers a gauge to be leveraged later
+
+
+## ------------------------------------------------
+## Method `CollectorRegistry$registerGauge`
+## ------------------------------------------------
+
+registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerGauge( name = 'test', help = 'some_gauge', namespace = "my_space" )
+Retrieves the gauge to be leveraged
+
+
+## ------------------------------------------------
+## Method `CollectorRegistry$getGauge`
+## ------------------------------------------------
+
+registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerGauge( name = 'test', help = 'my_gauge', namespace = "my_space" )
+count <- registry$getGauge(name = 'my_gauge', namespace = "my_space")
+count$incBy(5)
+Registers a counter to be leveraged later
+
+
+## ------------------------------------------------
+## Method `CollectorRegistry$registerCounter`
+## ------------------------------------------------
+
+registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerCounter( name = 'test', help = 'some_counter', namespace = "my_space" )
+Retrieves the counter to be leveraged
+
+
+## ------------------------------------------------
+## Method `CollectorRegistry$getCounter`
+## ------------------------------------------------
+
+registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerCounter( name = 'test', help = 'my_counter', namespace = "my_space" )
+count <- registry$getCounter(name = 'my_counter', namespace = "my_space")
+count$inc()
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -28,6 +84,26 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$new(storage_adapter = NULL)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{storage_adapter}}{instance of the storage adapter to how you want to persist metrics}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+instance of CollectorRegistry
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+Return the list of samples CollectorRegistry, typically to render after
+
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getMetricFamilySamples"></a>}}
@@ -35,6 +111,21 @@ Prometheus collector registry
 \subsection{Method \code{getMetricFamilySamples()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$getMetricFamilySamples()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+list of MetricFamilySamples
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+renderer <- PrometheusRenderMetrics$new()
+out <- renderer$render(registry$getMetricFamilySamples())
+Registers a gauge to be leveraged later
+
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -46,6 +137,30 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$registerGauge(name, help, namespace = NULL, labels = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name of the gauge}
+
+\item{\code{help}}{help text of the gauge}
+
+\item{\code{namespace}}{optional namespace that will be help keep the name unique}
+
+\item{\code{labels}}{list of label names to be used in the gauge}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerGauge( name = 'test', help = 'some_gauge', namespace = "my_space" )
+Retrieves the gauge to be leveraged
+
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getGauge"></a>}}
@@ -53,6 +168,28 @@ Prometheus collector registry
 \subsection{Method \code{getGauge()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$getGauge(name, namespace = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name of the gauge}
+
+\item{\code{namespace}}{optional namespace that will be help keep the name unique}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerGauge( name = 'test', help = 'my_gauge', namespace = "my_space" )
+count <- registry$getGauge(name = 'my_gauge', namespace = "my_space")
+count$incBy(5)
+Registers a counter to be leveraged later
+
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -69,6 +206,30 @@ Prometheus collector registry
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name of the counter}
+
+\item{\code{help}}{help text of the counter}
+
+\item{\code{namespace}}{optional namespace that will be help keep the name unique}
+
+\item{\code{labels}}{list of label names to be used in the counter}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerCounter( name = 'test', help = 'some_counter', namespace = "my_space" )
+Retrieves the counter to be leveraged
+
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getCounter"></a>}}
@@ -76,6 +237,26 @@ Prometheus collector registry
 \subsection{Method \code{getCounter()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CollectorRegistry$getCounter(name, namespace = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name of the counter}
+
+\item{\code{namespace}}{optional namespace that will be help keep the name unique}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{registry <- CollectorRegistry$new() # default to a new PrometheusMemoryAdapter
+registry$registerCounter( name = 'test', help = 'my_counter', namespace = "my_space" )
+count <- registry$getCounter(name = 'my_counter', namespace = "my_space")
+count$inc()
+}
+\if{html}{\out{</div>}}
+
 }
 
 }

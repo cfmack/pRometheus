@@ -2,11 +2,45 @@
 % Please edit documentation in R/PrometheusGauge.R
 \name{PrometheusGauge}
 \alias{PrometheusGauge}
-\title{Prometheus collector registry}
+\title{Prometheus Gauge object}
 \description{
-Prometheus collector registry
+Gauges differ from Counters as they can decrease in value
+}
+\examples{
 
-Prometheus collector registry
+## ------------------------------------------------
+## Method `PrometheusGauge$incBy`
+## ------------------------------------------------
+
+my_gauge$incBy(3)
+my_colors$incBy(3, list('red'))
+increment the gauge by a 1
+
+
+## ------------------------------------------------
+## Method `PrometheusGauge$inc`
+## ------------------------------------------------
+
+my_gauge$inc()
+my_colors$inc(list('red'))
+decrement the gauge by a discrete value
+
+
+## ------------------------------------------------
+## Method `PrometheusGauge$decBy`
+## ------------------------------------------------
+
+my_gauge$decBy(3)
+my_colors$decBy(3, list('red'))
+decrement the gauge by a 1
+
+
+## ------------------------------------------------
+## Method `PrometheusGauge$dec`
+## ------------------------------------------------
+
+my_gauge$dec()
+my_colors$dec(list('red'))
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -39,6 +73,25 @@ Prometheus collector registry
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{storage_adapter}}{instance of the storage adapter to how you want to persist metrics}
+
+\item{\code{name}}{name of the gauge metric you are collecting}
+
+\item{\code{help}}{helper text to display to Prometheus}
+
+\item{\code{namespace}}{mechanism to scope gauge name}
+
+\item{\code{label_names}}{the names of the labels.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+instance of PrometheusGauge
+Getter for the type, which will always be 'gauge'
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getType"></a>}}
@@ -48,6 +101,12 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$getType()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string of 'gauge'
+Getter for the scoped name of the gauge
+
+This could include a concatenated namespace
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getName"></a>}}
@@ -57,6 +116,10 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$getName()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string of name text
+Getter for the helper text
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getHelp"></a>}}
@@ -66,6 +129,10 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$getHelp()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string of helper text
+Getter for the label names
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getLabelNames"></a>}}
@@ -75,6 +142,10 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$getLabelNames()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+list of label names in the gauge
+Getter for an adapter usaged key to include name, namespace, and label_names
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getKey"></a>}}
@@ -84,6 +155,10 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$getKey()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+string to uniquely identify the gauge
+Setter for the value of gauge
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set"></a>}}
@@ -93,6 +168,16 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$set(value, labels = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value to set the gauge to}
+
+\item{\code{labels}}{list of label values, which must match to the same number of label names
+increment the gauge by a discrete value}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-incBy"></a>}}
@@ -100,6 +185,26 @@ Prometheus collector registry
 \subsection{Method \code{incBy()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$incBy(value, labels = list())}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value to implement the gauge by}
+
+\item{\code{labels}}{list of label values, which must match to the same number of label names}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{my_gauge$incBy(3)
+my_colors$incBy(3, list('red'))
+increment the gauge by a 1
+
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -111,6 +216,24 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$inc(labels = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{labels}}{list of label values, which must match to the same number of label names}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{my_gauge$inc()
+my_colors$inc(list('red'))
+decrement the gauge by a discrete value
+
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-decBy"></a>}}
@@ -120,6 +243,26 @@ Prometheus collector registry
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$decBy(value, labels = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{value to decrement the gauge by.  Should be a positive number}
+
+\item{\code{labels}}{list of label values, which must match to the same number of label names}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{my_gauge$decBy(3)
+my_colors$decBy(3, list('red'))
+decrement the gauge by a 1
+
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-dec"></a>}}
@@ -127,6 +270,22 @@ Prometheus collector registry
 \subsection{Method \code{dec()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PrometheusGauge$dec(labels = list())}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{labels}}{list of label values, which must match to the same number of label names}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{my_gauge$dec()
+my_colors$dec(list('red'))
+}
+\if{html}{\out{</div>}}
+
 }
 
 }

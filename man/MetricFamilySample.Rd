@@ -2,11 +2,11 @@
 % Please edit documentation in R/MetricFamilySample.R
 \name{MetricFamilySample}
 \alias{MetricFamilySample}
-\title{Prometheus Raw Sample Object}
+\title{Object to retain sample of the same time together (i.e. all gauges, counters, etc)}
 \description{
-Prometheus Raw Sample Object
+Object to retain sample of the same time together (i.e. all gauges, counters, etc)
 
-Prometheus Raw Sample Object
+Object to retain sample of the same time together (i.e. all gauges, counters, etc)
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -33,6 +33,23 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$new(name, type, help, label_names = list())}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{name}}{name of the gauge metric you are collecting}
+
+\item{\code{type}}{type of metric in this family}
+
+\item{\code{help}}{helper text to display to Prometheus}
+
+\item{\code{label_names}}{the names of the labels.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+instance of MetricFamilySample
+Getter for the family name
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getName"></a>}}
@@ -42,6 +59,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$getName()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+fully qualified name of the family
+Setter for the family name
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-setName"></a>}}
@@ -51,6 +72,14 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$setName(val)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{val}}{string to set the name
+Getter for the label names}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getLabelNames"></a>}}
@@ -60,6 +89,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$getLabelNames()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+list of label names
+Setter for the label names
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-setLabelNames"></a>}}
@@ -69,6 +102,14 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$setLabelNames(val)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{val}}{list to set the list of label names
+Getter for the family type}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getType"></a>}}
@@ -78,6 +119,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$getType()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+type of the family
+Setter for the family type
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-setType"></a>}}
@@ -87,6 +132,14 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$setType(val)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{val}}{string to set the family type
+Getter for the family help}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getHelp"></a>}}
@@ -96,6 +149,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$getHelp()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+fully qualif of the family
+Setter for the family help text
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-setHelp"></a>}}
@@ -105,6 +162,14 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$setHelp(val)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{val}}{string to set the help
+Getter for list of PrometheusSample objects}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getSamples"></a>}}
@@ -114,6 +179,10 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$getSamples()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+returns list of PrometheusSample objects
+Setter for the family samples
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-setSamples"></a>}}
@@ -123,6 +192,13 @@ Prometheus Raw Sample Object
 \if{html}{\out{<div class="r">}}\preformatted{MetricFamilySample$setSamples(val)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{val}}{list of PrometheusSample objects}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
