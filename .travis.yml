@@ -2,6 +2,10 @@ sudo: required
 os:
 - linux
 language: r
+r:
+- oldrel
+- release
+- devel
 install:
 - Rscript .build/build.R
 script:
@@ -17,7 +21,6 @@ deploy:
   file: pRometheus_*.tar.gz 
   skip_cleanup: true
   on:
-    tags: true
     repo: cfmack/pRometheus
     tags: true
 
