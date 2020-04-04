@@ -15,13 +15,17 @@ update_version = function() {
 
 
   # keep major and minor
+  desc_version <- desc$get("Version")
+
   version <- Sys.getenv(x="TRAVIS_TAG")
   if (version == "") {
-    version <- desc$get("Version")
+    version <- desc_version
+  } else if (version != desc_version) {
+    stop(paste("Tag (", version , ") does not match DESCRIPTION (", desc_version, ")"))
   }
 
   # signal an unrelease branch in CRAN by using 9000
-  if (Sys.getenv(x="TRAVIS_BRANCH") != "master" 
+  if (Sys.getenv(x="TRAVIS_BRANCH") != "master"
 	&& Sys.getenv(x="TRAVIS_TAG") == "") {
     version <- paste(version, "9000", sep=".")
   }
