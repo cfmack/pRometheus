@@ -17,7 +17,7 @@ Currently, you can run the following to pull from Github
 if (!requireNamespace("remotes"))
   install.packages("remotes")
 
-remotes::install_github("cfmack/pRomtheus")
+remotes::install_github("cfmack/pRometheus")
 ```
 
 Once a CRAN package is available, you can pull it with `install.packages`
