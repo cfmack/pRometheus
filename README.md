@@ -1,6 +1,6 @@
-
 # pRometheus
-Prometheus Client Library for R and Plumber
+
+Prometheus Client Library for R, Plumber, and Shiny.
 
 Port of [prometheus_client_php](https://github.com/endclothing/prometheus_client_php) 
 
@@ -8,12 +8,11 @@ Port of [prometheus_client_php](https://github.com/endclothing/prometheus_client
 
 This library currently only uses a in memory adapter with counters or gauges.  If you would like to contribute and create a redis or other backend, please do.   
 
-
 ## How to install
 
 Currently, you can run the following to pull from Github
 
-```
+```R
 if (!requireNamespace("remotes"))
   install.packages("remotes")
 
@@ -48,24 +47,23 @@ registry$registerCounter(
   help = 'some counter',
   namespace = "my_space"
 )
-
 ```
 
 After that, depending on your functionality, you can adjust of your metric whereever is appropriate in your API.   This is common to be within each end point
 
 ```R
-  gauge <- registry$getGauge(name = 'test', namespace = "my_space")
-  gauge$inc()
+gauge <- registry$getGauge(name = 'test', namespace = "my_space")
+gauge$inc()
 
-  gauge <- registry$getGauge(name = 'plot_gauge', namespace = "my_space")
-  gauge$decBy(2, list('red'))
-  
-  counter <- registry$getCounter(name = 'test counter', namespace = "my_space")
-  counter$inc()
-  
+gauge <- registry$getGauge(name = 'plot_gauge', namespace = "my_space")
+gauge$decBy(2, list('red'))
+
+counter <- registry$getCounter(name = 'test counter', namespace = "my_space")
+counter$inc()
 ```
 
-## How to publish to Promtheus
+## How to publish to Prometheus
+
 As push notification have not been added yet, you will want to expose a metrics end point
 
 ```R
@@ -78,5 +76,34 @@ function() {
   out <- renderer$render(registry$getMetricFamilySamples())
   return(out)
 }
-
 ``` 
+
+## Use with shiny
+
+Pass your application and registry to `prometheusRenderShiny`.
+
+```r
+library(shiny)
+
+registry <<- CollectorRegistry$new()
+registry$registerGauge(
+ name = 'test',
+ help = 'some_gauge',
+ namespace = "my_space"
+)
+
+ui <- fluidPage(
+ actionButton("click", "Click")
+)
+
+server <- function(input, output){
+ gauge <- registry$getGauge(name = 'test', namespace = "my_space")
+
+ observeEvent(input$click, {
+   gauge$inc()
+ })
+}
+
+app <- shinyApp(ui, server)
+prometheusRenderShiny(app, registry)
+```

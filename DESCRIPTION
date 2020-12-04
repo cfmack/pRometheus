@@ -2,7 +2,9 @@ Package: pRometheus
 Type: Package
 Title: Client Prometheus Library for R
 Version: 1.0.1
-Author: Charles Mack
+Authors@R: c(
+  person(given = "Charles", family = "Mack", email = "c.f.mack@gmail.com", role = c("aut", "cre")),
+  person(given = "John", family = "Coene", email = "jcoenep@gmail.com", role = c("ctb")))
 Maintainer: Charles Mack <c.f.mack@gmail.com>
 Description: When Prometheus scrapes your instance's HTTP endpoint, the client library sends the current state of all tracked metrics to the server. This R package helps collect and expect usage counters and metrics for Prometheus and containers.
 License: MIT + file LICENSE
@@ -14,5 +16,6 @@ Suggests:
     plumber,
     renv,
     testthat (>= 2.1.0),
-    stringi
-RoxygenNote: 7.1.0
+    stringi,
+    shiny
+RoxygenNote: 7.1.1
