@@ -1,0 +1,24 @@
+name: pRometheus
+'on':
+  push: null
+  pull_request_target: null
+  pull_request: null
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+      - name: Install ubuntu build dependencies
+        shell: bash
+        run: sudo apt-get install libcurl4-gnutls-dev  libgit2-dev
+      - uses: actions/checkout@master
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: 4.0.3
+      - run: Rscript -e 'print("hello")'
+      - run: Rscript ./.build/setup.R
+      - run: Rscript ./.build/build.R
+
