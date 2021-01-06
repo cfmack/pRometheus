@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Checkout repository
-      - name: Print something
+      - name: Install curl
         shell: bash
-        run: echo "Hello World"
+        run: sudo apt-get install libcurl libcurl-dev
       - uses: actions/checkout@master
       - uses: r-lib/actions/setup-r@v1
         with:
