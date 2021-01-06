@@ -16,5 +16,6 @@ jobs:
         name: Checkout repository
 
       - name: Print something
-        run: composer lint
+        shell: bash
+        run: echo "Hello World"
 
