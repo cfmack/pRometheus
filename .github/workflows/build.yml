@@ -13,7 +13,7 @@ jobs:
         name: Checkout repository
       - name: Install ubuntu build dependencies
         shell: bash
-        run: sudo apt-get install libcurl4-openssl-dev libgit2-dev
+        run: sudo apt-get install libcurl4-gnutls-dev  libgit2-dev
       - uses: actions/checkout@master
       - uses: r-lib/actions/setup-r@v1
         with:
