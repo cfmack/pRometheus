@@ -1,21 +1,21 @@
 name: pRometheus
-
-on:
-  push:
-  pull_request_target:
-  pull_request:
-
+'on':
+  push: null
+  pull_request_target: null
+  pull_request: null
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
-    
     steps:
       - uses: actions/checkout@v2
         name: Checkout repository
-
       - name: Print something
         shell: bash
         run: echo "Hello World"
-
+      - uses: actions/checkout@master
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: 4.0.3
+      - run: Rscript -e 'print("hello")'
