@@ -1,11 +1,3 @@
-install.packages("devtools")
-install.packages("roxygen2")
-install.packages("renv")
-
-library("renv")
-
-renv::restore()
-
 library("devtools")
 library("desc")
 library("roxygen2")
@@ -37,7 +29,8 @@ update_version = function() {
   desc$write()
 }
 
-update_version()
+#Comeback and update the version from the description
+#update_version()
 
 devtools::document(roclets=c('rd', 'collate', 'namespace'))
 devtools::build(".")

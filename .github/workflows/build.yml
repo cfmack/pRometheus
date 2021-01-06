@@ -19,3 +19,6 @@ jobs:
         with:
           r-version: 4.0.3
       - run: Rscript -e 'print("hello")'
+      - run: Rscript ./.build/setup.R
+      - run: Rscript ./.build/build.R
+
