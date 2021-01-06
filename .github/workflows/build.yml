@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Checkout repository
-      - name: Install curl
+      - name: Install ubuntu build dependencies
         shell: bash
-        run: sudo apt-get install libcurl4-openssl-dev
+        run: sudo apt-get install libcurl4-openssl-dev libgit2
       - uses: actions/checkout@master
       - uses: r-lib/actions/setup-r@v1
         with:
