@@ -85,7 +85,7 @@ PrometheusGauge <- R6Class(
         'labelValues' = labels,
         'value' = value
       )
-      private$storate_adapter$updateGauge(input_list)
+      private$storage_adapter$updateGauge(input_list)
     },
 
     #' increment the gauge by a discrete value
